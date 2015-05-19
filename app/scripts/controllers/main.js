@@ -1,17 +1,23 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name fiveMinCatchupApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the fiveMinCatchupApp
- */
 angular.module('fiveMinCatchupApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, uiGmapGoogleMapApi) {
+
+    $scope.map = {
+      center: {
+        latitude: 37.7749295,
+        longitude: -122.4194155
+      },
+      zoom: 8
+    }
+
+    $scope.markers = [{
+        id: 0,
+        coords: {
+            latitude: 37.7749295,
+            longitude: -122.4194155
+        },
+        data: 'restaurant'
+    }];
+
   });
