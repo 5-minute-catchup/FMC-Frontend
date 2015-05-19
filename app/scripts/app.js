@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name fiveMinCatchupApp
- * @description
- * # fiveMinCatchupApp
- *
- * Main module of the application.
- */
 angular
   .module('fiveMinCatchupApp', [
     'ngAnimate',
@@ -15,7 +7,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'uiGmapgoogle-maps'
   ])
   .config(function ($routeProvider) {
     $routeProvider
