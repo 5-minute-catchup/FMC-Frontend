@@ -8,7 +8,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'uiGmapgoogle-maps'
+    'google-maps',
+    'ngGeolocation',
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -24,3 +25,5 @@ angular
         redirectTo: '/'
       });
   });
+
+ 

@@ -1,24 +1,38 @@
-'use strict';
+"use strict";
 
-var app = angular.module('fiveMinCatchupApp');
+var app = angular.module("fiveMinCatchupApp", []);
 
-  app.controller('MainCtrl', function ($scope, uiGmapGoogleMapApi) {
+app.factory("GeolocationService", ['$q', '$window', '$rootScope', function ($q, $window, $rootScope) {
+    return function () {
+        var deferred = $q.defer();
 
-    $scope.map = {
-      center: {
-        latitude: 37.7749295,
-        longitude: -122.4194155
-      },
-      zoom: 8
+        if (!$window.navigator) {
+            $rootScope.$apply(function() {
+                deferred.reject(new Error("Geolocation is not supported"));
+            });
+        } else {
+            $window.navigator.geolocation.getCurrentPosition(function (position) {
+                $rootScope.$apply(function() {
+                    deferred.resolve(position);
+                });
+            }, function (error) {
+                $rootScope.$apply(function() {
+                    deferred.reject(error);
+                });
+            });
+        }
+
+        return deferred.promise;
     }
+}]);
 
-    $scope.markers = [{
-        id: 0,
-        coords: {
-            latitude: 37.7749295,
-            longitude: -122.4194155
-        },
-        data: 'restaurant'
-    }];
+app.controller('MainCtrl', ['$scope', 'GeolocationService', function ($scope, geolocation) {
+    $scope.position = null;
+    $scope.message = "Determining geolocation...";
 
-  });
+    geolocation().then(function (position) {
+        $scope.position = position;
+    }, function (reason) {
+        $scope.message = "Could not be determined."
+    });
+}]);
