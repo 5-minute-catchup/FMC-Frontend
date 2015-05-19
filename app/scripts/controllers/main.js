@@ -1,23 +1,13 @@
 'use strict';
+angular.module('fiveMinCatchupApp', ['ngGeolocation', 'uiGmapgoogle-maps'])
+  .controller('MainCtrl', ['$geolocation', '$scope', function($geolocation, $scope) {
+        $geolocation.getCurrentPosition({
+            timeout: 60000
+         }).then(function(position) {
+            $scope.myPosition = position;
+         });
+         $scope.map = myPosition.coords 
+          latitude: 0,
+          longitude: 0,
 
-angular.module('fiveMinCatchupApp')
-  .controller('MainCtrl', function ($scope, uiGmapGoogleMapApi) {
-
-    $scope.map = {
-      center: {
-        latitude: 37.7749295,
-        longitude: -122.4194155
-      },
-      zoom: 8
-    }
-
-    $scope.markers = [{
-        id: 0,
-        coords: {
-            latitude: 37.7749295,
-            longitude: -122.4194155
-        },
-        data: 'restaurant'
-    }];
-
-  });
+  }]);
