@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('fiveMinCatchupApp')
-  .controller('MainCtrl', function ($scope, uiGmapGoogleMapApi) {
+var app = angular.module('fiveMinCatchupApp');
+
+  app.controller('MainCtrl', function ($scope, uiGmapGoogleMapApi) {
 
     $scope.map = {
       center: {
