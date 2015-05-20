@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
-var server = require('http').Server(app);
+var server = require('http').createServer(app);
 var path = require("path")
+var port = process.env.PORT || 3000
 
 app.use(express.static(__dirname + '/'));
 
@@ -18,6 +19,5 @@ var server = app.listen(3000, function () {
 
 });
 
-var port = process.env.PORT || 3000
 
 module.exports = server;
