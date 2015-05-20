@@ -1,4 +1,4 @@
-// Generated on 2015-05-19 using generator-angular 0.11.1
+// Generated on 2015-05-20 using generator-angular 0.11.1
 'use strict';
 
 // # Globbing
@@ -441,4 +441,7 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('heroku',
+    ['compass:dist', 'autoprefixer', 'imagemin']);
 };
