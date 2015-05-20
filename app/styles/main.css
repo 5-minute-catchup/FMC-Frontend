@@ -1,5 +1,19 @@
-.angular-google-map-container { 
-  height: 400px; 
+body {
+  padding: 0;
+  height: 100%;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+  padding: 0;
+}
+
+#map-canvas { 
+  height: 90%; 
+  margin: 0; 
+  padding: 0;
+  z-index: 6;
 }
 
 .browsehappy {
@@ -9,9 +23,6 @@
   padding: 0.2em 0;
 }
 
-body {
-  padding: 0;
-}
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,

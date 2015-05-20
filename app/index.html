@@ -1,36 +1,26 @@
 <!doctype html>
-<html class="no-js">
+<html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Five Minute Catchup</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
+    <link rel="stylesheet" href="app/styles/main.css">
+<!--    Internal map style (cant remove)-->
+      <style type="text/css">
+      html, body, #map-canvas { height: 90%; margin: 0; padding: 0;}
+    </style>
+<!--   Public API  -->
+     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=false"></script>
   </head>
-  <body> 
-    <div ng-app="fiveMinCatchupApp">
-      <div ng-controller="MainCtrl">
-        <div ng-show="position">        
-          <p>{{ position | json }}</p>
-        </div>
-        <div ng-hide="position">
-          <p>{{ message }}</p>
-        </div>
-      </div>
-    </div>
+
+  <body ng-app="fmcFrontendApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
+    <!-- navigation -->
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -43,7 +33,7 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">fiveMinCatchup</a>
+            <a class="navbar-brand" href="#/">Five Minute Catchup</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -57,28 +47,20 @@
         </div>
       </div>
     </div>
+   <!-- Navigation End -->
+   
+    <div id="map-canvas"></div>
 
+   <!-- footer -->
     <div class="container">
       <div ng-view=""></div>
     </div>
 
     <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <p><span class="glyphicon glyphicon-heart"></span> from the Five Minute Catchup team</p>
       </div>
     </div>
-
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
 
     <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
 
@@ -94,16 +76,15 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
-    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
-
 
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+        <script src="app/scripts/app.js"></script>
+        <script src="app/scripts/controllers/main.js"></script>
+        <script src="app/scripts/map.js"></script>
+        <script src="app/scripts/controllers/about.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -1,7 +1,10 @@
 {
-  "name": "fivemincatchup",
+  "name": "fmcfrontend",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "bower": "^1.4.1",
+    "express": "^4.12.4"
+  },
   "repository": {},
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -25,10 +28,14 @@
     "grunt-svgmin": "^2.0.0",
     "grunt-usemin": "^3.0.0",
     "grunt-wiredep": "^2.0.0",
+    "jasmine-core": "^2.3.4",
     "jshint-stylish": "^1.0.0",
-    "karma-jasmine": "*",
-    "karma-phantomjs-launcher": "*",
+    "karma": "^0.12.32",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-jasmine": "^0.3.5",
+    "karma-phantomjs-launcher": "^0.1.4",
     "load-grunt-tasks": "^3.1.0",
+    "protractor": "^2.0.0",
     "time-grunt": "^1.0.0"
   },
   "engines": {
@@ -36,5 +43,16 @@
   },
   "scripts": {
     "test": "grunt test"
-  }
+  },
+  "description": "This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular) version 0.11.1.",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install"
+  },
+  "author": "",
+  "license": "ISC"
 }
