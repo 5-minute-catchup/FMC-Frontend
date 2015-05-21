@@ -7,7 +7,7 @@ var port = process.env.PORT || 3000
 app.use(express.static(__dirname + '/'));
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname + '/app/index.html'));
+  res.sendFile(path.join(__dirname + '/app/fbtest.html'));
 });
 
 var server = app.listen(port, function () {
