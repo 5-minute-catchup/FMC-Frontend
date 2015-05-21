@@ -1,3 +1,4 @@
+"use strict";
 var map;
 
 function initialize() {
@@ -54,3 +55,5 @@ function handleNoGeolocation(errorFlag) {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+

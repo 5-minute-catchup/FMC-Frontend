@@ -62,8 +62,6 @@
       </div>
     </div>
 
-    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
-
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -75,8 +73,6 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
-
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -85,6 +81,8 @@
         <script src="app/scripts/controllers/main.js"></script>
         <script src="app/scripts/map.js"></script>
         <script src="app/scripts/controllers/about.js"></script>
-        <!-- endbuild -->
+        <!-- socket scripts -->
+        <script src="/socket.io/socket.io.js"></script>
+        <script> var socket = io();</script>
 </body>
 </html>
