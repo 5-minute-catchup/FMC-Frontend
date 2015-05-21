@@ -17,6 +17,13 @@ var io = require('socket.io')(http);
 
 io.on('connection', function(socket){
   console.log('a user connected');
+  
+  socket.on('marker', function(data) {
+  
+  console.log('marker latitude: ' + data.lat + ', marker longitude:' + data.lng);
+    socket.broadcast.emit('show-marker', data);
+    });
+
 });
 
 http.listen(3000, function(){

@@ -1,5 +1,6 @@
 "use strict";
 var map;
+var markers = []
 
 function initialize() {
   var mapOptions = {
@@ -57,3 +58,33 @@ function handleNoGeolocation(errorFlag) {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 
+// listen for Marker event
+google.maps.event.addListener(map, 'load', function(event) {
+
+    var marker = addMarker(event.latLng);
+
+    
+    socket.emit('marker', {
+        'lat': marker.position.k,
+        'lng': marker.position.D
+    });
+});
+
+// Add a marker to the map 
+function addMarker(location) {
+
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map
+    });
+
+    markers.push(marker);
+
+    console.log(location);
+    console.log("marker: " + marker.position.k + " " + marker.position.D);
+
+    return marker;
+}
+
+//Listen for other users markers
+socket.on('show-marker', addMarker);
