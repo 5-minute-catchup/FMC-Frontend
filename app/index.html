@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="fmcFrontendApp">
   <head>
     <meta charset="utf-8">
     <title>Five Minute Catchup</title>
@@ -13,14 +13,12 @@
     </style>
 <!--   Public API  -->
      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=false"></script>
+     <script src="http://connect.facebook.net/en_US/all.js"></script>
+
   </head>
 
-  <body ng-app="fmcFrontendApp">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+  <body>
 
-    <!-- navigation -->
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -48,6 +46,13 @@
       </div>
     </div>
    <!-- Navigation End -->
+
+<!--     <fb:login-button id="fb login" scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button> -->
+
+  <button id="fb-login" type="button" ng-click="login()" ng-hide="isLoggedIn" class="btn btn-default navbar-btn"> Login </button>
+   
+   <div id="fb-root"></div>
    
     <div id="map-canvas"></div>
 
@@ -75,8 +80,6 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
-
     <!-- endbower -->
     <!-- endbuild -->
 
