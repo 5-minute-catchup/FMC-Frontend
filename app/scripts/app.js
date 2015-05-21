@@ -18,33 +18,26 @@ angular
     'ngTouch',
     'ngFacebook'
   ])
-  .config(function ($routeProvider, $facebookProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'app/views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  .config(function ($facebookProvider) {
 
-    $facebookProvider.setAppId('495097777308126')
-  });
+    $facebookProvider.setAppId('495097777308126');
 
-  .run( function($rootScope) {
-          (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-          if (document.getElementById('facebook-jssdk')) {return;}
+    $facebookProvider.setCustomInit({
+        version: 'v2.1'
     });
+
+    $facebookProvider.setPermissions('email', 'uesr_friends', 'public_profile');
+  })
+
+  .run(function($rootScope) {
+          (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk')); 
+  })
 
   .controller( function($facebook) {
     var self = this;
@@ -52,6 +45,7 @@ angular
     self.isLoggedIn = false;
     self.login = function() {
       $facebook.login().then(function() {
+        console.log("Hello")
         refresh();
       });
     }
@@ -70,4 +64,4 @@ angular
 
     refresh();
 
-  };
+  });
