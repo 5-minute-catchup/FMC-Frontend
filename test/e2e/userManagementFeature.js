@@ -6,9 +6,9 @@ describe('Facebook sign in', function() {
     browser.get('http://localhost:3000');
   });
 
-  it('has a title', function() {
-    expect(browser.getTitle()).toEqual('Five Minute Catchup');
-  });
+  // it('has a title', function() {
+  //   expect(browser.getTitle()).toEqual('Five Minute Catchup');
+  // });
 
   it('has a login button', function() {
     expect(element(by.id('fb-login')).isPresent()).toBe(true); 
