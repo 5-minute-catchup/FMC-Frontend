@@ -39,14 +39,13 @@ angular
     self.isLoggedIn = false;
     self.login = function() {
       console.log('hello');
-      $facebook.login().then(function(ret) {
-        console.log(ret);
+      $facebook.login().then(function() {
         console.log("Please see me")
         refresh();
       }, function(error) {
         console.log(error)
       });
-    }
+    }    
 
     function refresh() {
       $facebook.api("/me").then(
@@ -58,6 +57,17 @@ angular
         function(err) {
           self.welcomeMsg = "Please log in";
         });
+    }
+
+    self.isLoggedIn = true;
+    self.logout = function() {
+      console.log('hi');
+      $facebook.logout().then(function() {
+        console.log("Logging out")
+        refresh();
+      }, function(error) {
+        console.log(error)
+      });
     }
 
     refresh();
