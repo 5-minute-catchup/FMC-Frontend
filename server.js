@@ -1,35 +1,28 @@
-var express = require('express');
-var app = express();
-var server = require('http').createServer(app);
-var path = require("path")
-var port = process.env.PORT || 3000
+var app = require('express')();
 var http = require('http').Server(app);
+var io = require('socket.io')(http);
 var markers = [];
 
-
-app.use(express.static(__dirname + '/'));
-
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname + '/app/index.html'));
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/app/index.html');
+});
+app.get('/mapjs', function(req, res){
+  res.sendFile(__dirname + '/app/scripts/map.js');
 });
 
-
-var io = require('socket.io')(http);
-
 io.on('connection', function(socket){
-  console.log('a user connected');
-   markers.push(socket.id);
+    console.log('a user connected');
   
-  socket.on('marker', function(data) {
-  
-  console.log('marker latitude: ' + data.lat + ', marker longitude:' + data.lng);
-    socket.broadcast.emit('show-marker', data);
-    });
+    socket.on('marker', function(data) {
+      data.socketId = socket.id;
+      
+      markers[socket.id] = data;
 
+      console.log('marker latitude: ' + data.lat + ', marker longitude:' + data.lng);
+      socket.broadcast.emit('show-marker', data);
+    });
 });
 
 http.listen(3000, function(){
-  console.log('five minute catch up is on port 3000');
+  console.log('listening on *:3000');
 });
-
-module.exports = server;

@@ -53,7 +53,6 @@
 
    <!-- footer -->
     <div class="container">
-      <div ng-view=""></div>
     </div>
 
     <div class="footer">
@@ -76,13 +75,25 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="app/scripts/app.js"></script>
-        <script src="app/scripts/controllers/main.js"></script>
-        <script src="app/scripts/map.js"></script>
-        <script src="app/scripts/controllers/about.js"></script>
-        <!-- socket scripts -->
-        <script src="/socket.io/socket.io.js"></script>
-        <script> var socket = io();</script>
-</body>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="app/scripts/app.js"></script>
+    <script src="app/scripts/controllers/main.js"></script>
+    <script src="app/scripts/map.js"></script>
+    <script src="app/scripts/controllers/about.js"></script>
+    
+    <!-- socket scripts -->
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io();
+
+      //Listen for other users markers
+      socket.on('show-marker', function(data) {
+        console.log(data);
+        var loc = new google.maps.LatLng(data.lat,
+                                       data.lng);
+        addMarker(loc, data.socketId);
+      });
+    </script>
+  </body>
 </html>
