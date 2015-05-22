@@ -17,6 +17,7 @@ angular
     $facebookProvider.setCustomInit({
         version: 'v2.2',
         channelUrl : '/index.html',
+        status : true,
         xfbml : true
     });
 
@@ -59,7 +60,6 @@ angular
         });
     }
 
-    self.isLoggedIn = true;
     self.logout = function() {
       console.log('hi');
       $facebook.logout().then(function() {

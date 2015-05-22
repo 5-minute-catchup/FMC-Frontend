@@ -38,8 +38,6 @@
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/">Contact</a></li>
-              <li><button id="fb-login" type="button" ng-click="fbCtrl.login()" ng-hide="fbCtrl.isLoggedIn" class="btn btn-default navbar-btn"> Login with Facebook </button></li>
-              <li><button id="fb-logout" type="button" ng-click="fbCtrl.logout()" ng-show="fbCtrl.isLoggedIn" class="btn btn-default navbar-btn"> Logout </button></li>
             </ul>
           </div>
         </div>
@@ -54,6 +52,8 @@
                 {{welcomeMsg}}
             </h4>
         </div>
+              <li><button id="fb-login" type="button" ng-click="fbCtrl.login()" ng-hide="fbCtrl.isLoggedIn" class="btn btn-default navbar-btn"> Login with Facebook </button></li>
+              <li><button id="fb-logout" type="button" ng-click="fbCtrl.logout()" ng-show="fbCtrl.isLoggedIn" class="btn btn-default navbar-btn"> Logout </button></li>
 
    
    <div id="fb-root"></div>
