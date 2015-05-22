@@ -1,4 +1,6 @@
+"use strict";
 var map;
+var markers = []
 
 function initialize() {
   var mapOptions = {
@@ -19,6 +21,12 @@ function initialize() {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
+
+
+      socket.emit('marker', {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      });
 
       var infowindow = new google.maps.InfoWindow({
         map: map,
@@ -54,3 +62,22 @@ function handleNoGeolocation(errorFlag) {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+// Add a marker to the map 
+function addMarker(location, text) {
+    text = text || '';
+
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.setContent(text); 
+      infowindow.open(map,marker);
+    });
+
+    return marker;
+}
