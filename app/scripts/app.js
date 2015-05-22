@@ -12,7 +12,7 @@ angular
   ])
   .config(function ($facebookProvider) {
 
-    $facebookProvider.setAppId('495097777308126');
+    $facebookProvider.setAppId('653014024831372');
 
     $facebookProvider.setCustomInit({
         version: 'v2.2',
@@ -20,7 +20,7 @@ angular
         xfbml : true
     });
 
-    $facebookProvider.setPermissions('email, public_profile');
+    $facebookProvider.setPermissions('user_id, email, public_profile');
   })
 
   .run(function() {
@@ -43,6 +43,8 @@ angular
         console.log(ret);
         console.log("Please see me")
         refresh();
+      }, function(error) {
+        console.log(error)
       });
     }
 
