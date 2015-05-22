@@ -18,7 +18,6 @@ app.get('/mapjs', function(req, res){
   res.sendFile(__dirname + '/app/scripts/map.js');
 });
 
-
 io.on('connection', function(socket){
     console.log('a user connected');
   

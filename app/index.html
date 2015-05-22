@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="fmcFrontendApp">
+<html>
   <head>
     <meta charset="utf-8">
     <title>Five Minute Catchup</title>
@@ -12,10 +12,9 @@
       html, body, #map-canvas { height: 90%; margin: 0; padding: 0;}
     </style>
 <!--   Public API  -->
-
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=false"></script>
   </head>
 
-  <body ng-controller="fbCtrl as fbCtrl">
 
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
@@ -47,23 +46,10 @@
 
 <!--     <fb:login-button id="fb login" scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button> -->
-        <div class="container">
-            <h4>
-                {{welcomeMsg}}
-            </h4>
-        </div>
-              <li><button id="fb-login" type="button" ng-click="fbCtrl.login()" ng-hide="fbCtrl.isLoggedIn" class="btn btn-default navbar-btn"> Login with Facebook </button></li>
-              <li><button id="fb-logout" type="button" ng-click="fbCtrl.logout()" ng-show="fbCtrl.isLoggedIn" class="btn btn-default navbar-btn"> Logout </button></li>
-
-   
-   <div id="fb-root"></div>
    
     <div id="map-canvas"></div>
 
    <!-- footer -->
-    <div class="container">
-      <div ng-view=""></div>
-    </div>
 
     <div class="footer">
       <div class="container">
@@ -74,14 +60,8 @@
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
+
     <!-- endbower -->
     <!-- endbuild -->
 

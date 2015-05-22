@@ -1,75 +1,66 @@
-'use strict';
+// 'use strict';
 
-angular
-  .module('fmcFrontendApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'ngFacebook'
-  ])
-  .config(function ($facebookProvider) {
 
-    $facebookProvider.setAppId('653014024831372');
+  // .config(function ($facebookProvider) {
 
-    $facebookProvider.setCustomInit({
-        version: 'v2.2',
-        channelUrl : '/index.html',
-        status : true,
-        xfbml : true
-    });
+  //   $facebookProvider.setAppId('653014024831372');
 
-    $facebookProvider.setPermissions('email, public_profile');
-  })
+  //   $facebookProvider.setCustomInit({
+  //       version: 'v2.2',
+  //       channelUrl : '/index.html',
+  //       status : true,
+  //       xfbml : true
+  //   });
 
-  .run(function() {
-          (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'facebook-jssdk')); 
-  })
+  //   $facebookProvider.setPermissions('email, public_profile');
+  // })
 
-  .controller( 'fbCtrl', [ '$facebook', function($facebook) {
-    var self = this;
+  // .run(function() {
+  //         (function(d, s, id) {
+  //           var js, fjs = d.getElementsByTagName(s)[0];
+  //           if (d.getElementById(id)) return;
+  //           js = d.createElement(s); js.id = id;
+  //           js.src = "//connect.facebook.net/en_US/sdk.js";
+  //           fjs.parentNode.insertBefore(js, fjs);
+  //         }(document, 'script', 'facebook-jssdk')); 
+  // })
 
-    self.isLoggedIn = false;
-    self.login = function() {
-      console.log('hello');
-      $facebook.login().then(function() {
-        console.log("Please see me")
-        refresh();
-      }, function(error) {
-        console.log(error)
-      });
-    }    
+  // .controller( 'fbCtrl', [ '$facebook', function($facebook) {
+  //   var self = this;
 
-    function refresh() {
-      $facebook.api("/me").then(
-        function(response) {
-          console.log(response);
-          self.welcomeMsg = "Welcome " + response.name
-          self.isLoggedIn = true
-        },
-        function(err) {
-          self.welcomeMsg = "Please log in";
-        });
-    }
+  //   self.isLoggedIn = false;
+  //   self.login = function() {
+  //     console.log('hello');
+  //     $facebook.login().then(function() {
+  //       console.log("Please see me")
+  //       refresh();
+  //     }, function(error) {
+  //       console.log(error)
+  //     });
+  //   }    
 
-    self.logout = function() {
-      console.log('hi');
-      $facebook.logout().then(function() {
-        console.log("Logging out")
-        refresh();
-      }, function(error) {
-        console.log(error)
-      });
-    }
+  //   function refresh() {
+  //     $facebook.api("/me").then(
+  //       function(response) {
+  //         console.log(response);
+  //         self.welcomeMsg = "Welcome " + response.name
+  //         self.isLoggedIn = true
+  //       },
+  //       function(err) {
+  //         self.welcomeMsg = "Please log in";
+  //       });
+  //   }
 
-    refresh();
+  //   self.logout = function() {
+  //     console.log('hi');
+  //     $facebook.logout().then(function() {
+  //       console.log("Logging out")
+  //       refresh();
+  //     }, function(error) {
+  //       console.log(error)
+  //     });
+  //   }
 
-  }]);
+  //   refresh();
+
+  // }]);
