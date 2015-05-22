@@ -20,7 +20,7 @@ angular
         xfbml : true
     });
 
-    $facebookProvider.setPermissions('user_id, email, public_profile');
+    $facebookProvider.setPermissions('email, public_profile');
   })
 
   .run(function() {
