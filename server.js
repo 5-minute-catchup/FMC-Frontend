@@ -5,8 +5,13 @@ var port = process.env.PORT || 3000
 var path = require("path")
 var http = require('http').Server(app);
 var markers = [];
-var io = require('socket.io')(http);
+var io = require('socket.io').listen(server);
 
+// http.listen(3000, function(){
+//   console.log('five minute catch up is on port 3000');
+// });
+
+server.listen(process.env.PORT || 3000);
 
 app.use(express.static(__dirname + '/'));
 
@@ -25,7 +30,6 @@ io.on('connection', function(socket){
       data.socketId = socket.id;
       
       markers[socket.id] = data;
-
   
   console.log('marker latitude: ' + data.lat + ', marker longitude:' + data.lng);
     socket.broadcast.emit('show-marker', data);
@@ -33,8 +37,5 @@ io.on('connection', function(socket){
 
 });
 
-http.listen(3000, function(){
-  console.log('five minute catch up is on port 3000');
-});
 
 module.exports = server;
